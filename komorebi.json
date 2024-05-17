@@ -49,7 +49,12 @@
         "id": "Arc extension popup",
         "matching_strategy": "Equals"
       }
-    ]
+    ],
+    {
+      "kind": "Exe",
+      "id": "Authy Desktop.exe",
+      "matching_strategy": "Equals"
+    }
   ],
   "monitors": [
     {
@@ -73,10 +78,6 @@
         {
           "name": "V",
           "layout": "Rows"
-        },
-        {
-          "name": "VI",
-          "layout": "Grid"
         }
       ]
     }
