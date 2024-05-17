@@ -1,0 +1,84 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.24/schema.json",
+  "app_specific_configuration_path": "$Env:USERPROFILE/applications.yaml",
+  "window_hiding_behaviour": "Cloak",
+  "cross_monitor_move_behaviour": "Insert",
+  "default_workspace_padding": 1,
+  "default_container_padding": 0,
+  "border_padding": 0,
+  "border_offset": -1,
+  "active_window_border": false,
+  "active_window_border_colours": {
+    "single": "#42a5f5",
+    "stack": "#00a542",
+    "monocle": "#ff3399"
+  },
+  "float_rules": [
+    [
+      {
+        "kind": "Exe",
+        "id": "steamwebhelper.exe",
+        "matching_strategy": "Equals"
+      },
+      {
+        "kind": "Title",
+        "id": "Menu",
+        "matching_strategy": "Equals"
+      }
+    ],
+    [
+      {
+        "kind": "Exe",
+        "id": "steamwebhelper.exe",
+        "matching_strategy": "Equals"
+      },
+      {
+        "kind": "Title",
+        "id": "Launching...",
+        "matching_strategy": "Equals"
+      }
+    ],
+    [
+      {
+        "kind": "Exe",
+        "id": "Arc.exe",
+        "matching_strategy": "Equals"
+      },
+      {
+        "kind": "Title",
+        "id": "Arc extension popup",
+        "matching_strategy": "Equals"
+      }
+    ]
+  ],
+  "monitors": [
+    {
+      "workspaces": [
+        {
+          "name": "I",
+          "layout": "BSP"
+        },
+        {
+          "name": "II",
+          "layout": "VerticalStack"
+        },
+        {
+          "name": "III",
+          "layout": "HorizontalStack"
+        },
+        {
+          "name": "IV",
+          "layout": "UltrawideVerticalStack"
+        },
+        {
+          "name": "V",
+          "layout": "Rows"
+        },
+        {
+          "name": "VI",
+          "layout": "Grid"
+        }
+      ]
+    }
+  ]
+}

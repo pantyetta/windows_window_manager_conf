@@ -1,0 +1,28 @@
+.shell powershell
+
+# Reload whkd configuration
+# alt + o                 : taskkill /f /im whkd.exe && start /b whkd # if shell is cmd
+# alt + o                 : taskkill /f /im whkd.exe; Start-Process whkd -WindowStyle hidden # if shell is pwsh / powershell
+# alt + shift + o         : komorebic reload-configuration
+
+# Move windows
+alt + shift + h         : komorebic move left
+alt + shift + j         : komorebic move down
+alt + shift + k         : komorebic move up
+alt + shift + l         : komorebic move right
+
+# Resize
+alt + shift + d         : komorebic resize-edge right increase; komorebic resize-edge left decrease
+alt + shift + w         : komorebic resize-edge up increase; komorebic resize-edge down decrease
+alt + shift + a         : komorebic resize-edge right decrease; komorebic resize-edge left increase
+alt + shift + s         : komorebic resize-edge up decrease; komorebic resize-edge down increase
+
+# Manipulate windows
+alt + t                 : komorebic toggle-float
+alt + f                 : komorebic toggle-monocle
+
+# windows shurtcut
+win + m                 : komorebic minimize
+win + e                 : explorer
+win + r                 : (New-Object -ComObject "Shell.Application").FileRun()
+win + 1                 : start-process arc
