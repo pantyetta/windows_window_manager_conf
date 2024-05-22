@@ -26,3 +26,4 @@ win + m                 : komorebic minimize
 win + e                 : explorer
 win + r                 : (New-Object -ComObject "Shell.Application").FileRun()
 win + 1                 : start-process arc
+win + q                 : komorebic close
