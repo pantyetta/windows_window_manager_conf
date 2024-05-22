@@ -1,18 +1,17 @@
 {
   "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.24/schema.json",
-  "app_specific_configuration_path": "$Env:USERPROFILE/applications.yaml",
-  "window_hiding_behaviour": "Cloak",
-  "cross_monitor_move_behaviour": "Insert",
-  "default_workspace_padding": 1,
-  "default_container_padding": 0,
-  "border_padding": 0,
-  "border_offset": -1,
-  "active_window_border": false,
+  "active_window_border": true,
   "active_window_border_colours": {
-    "single": "#42a5f5",
+    "single": "#86DEC2",
     "stack": "#00a542",
-    "monocle": "#ff3399"
+    "monocle": "#F73837"
   },
+  "app_specific_configuration_path": "$Env:USERPROFILE/applications.yaml",
+  "border_offset": -1,
+  "border_width": 1,
+  "cross_monitor_move_behaviour": "Insert",
+  "default_container_padding": 8,
+  "default_workspace_padding": 0,
   "float_rules": [
     [
       {
@@ -81,5 +80,6 @@
         }
       ]
     }
-  ]
+  ],
+  "window_hiding_behaviour": "Cloak"
 }
