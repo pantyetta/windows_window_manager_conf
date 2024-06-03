@@ -53,6 +53,23 @@
       "kind": "Exe",
       "id": "Authy Desktop.exe",
       "matching_strategy": "Equals"
+    },
+    [
+      {
+        "kind": "Exe",
+        "id": "Kindle.exe",
+        "matching_strategy": "Equals"
+      },
+      {
+        "kind": "Title",
+        "id": "Sync to Most Recent Page Read",
+        "matching_strategy": "Equals"
+      }
+    ],
+    {
+      "kind": "Exe",
+      "id": "spacedeskServiceTray.exe",
+      "matching_strategy": "Equals"
     }
   ],
   "monitors": [
