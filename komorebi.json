@@ -49,6 +49,18 @@
         "matching_strategy": "Equals"
       }
     ],
+    [
+      {
+        "kind": "Exe",
+        "id": "Arc.exe",
+        "matching_strategy": "Equals"
+      },
+      {
+        "kind": "Title",
+        "id": "Arc picture in picture",
+        "matching_strategy": "Equals"
+      }
+    ],
     {
       "kind": "Exe",
       "id": "Authy Desktop.exe",
