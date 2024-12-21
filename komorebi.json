@@ -6,13 +6,13 @@
     "stack": "#00a542",
     "monocle": "#F73837"
   },
-  "app_specific_configuration_path": "$Env:USERPROFILE/applications.yaml",
+  "app_specific_configuration_path": "$Env:USERPROFILE/applications.json",
   "border_offset": -1,
   "border_width": 1,
   "cross_monitor_move_behaviour": "Insert",
   "default_container_padding": 4,
   "default_workspace_padding": 4,
-  "float_rules": [
+  "ignore_rules": [
     [
       {
         "kind": "Exe",
@@ -82,6 +82,11 @@
       "kind": "Exe",
       "id": "spacedeskServiceTray.exe",
       "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "qemu-system-x86_64.exe",
+      "matching_strategy": "Equals"
     }
   ],
   "monitors": [
@@ -110,5 +115,12 @@
       ]
     }
   ],
-  "window_hiding_behaviour": "Cloak"
+  "window_hiding_behaviour": "Cloak",
+  "tray_and_multi_window_applications": [
+    {
+      "kind": "Exe",
+      "id": "Notion.exe",
+      "matching_strategy": "Equals"
+    }
+  ]
 }
