@@ -33,9 +33,9 @@ bars:
       bottom: 0
       right: 6
     widgets:
-      left: ["active_window", "taskbar"]
-      center: ["komorebi_workspaces"]
-      right: ["media", "power_menu"]
+      left: ["komorebi_workspaces", "taskbar"]
+      center: ["active_window"]
+      right: ["media", "clock", "power_menu"]
   secondary-bar:
     enabled: true
     screens: ["KH250V-Z"]
@@ -61,20 +61,33 @@ bars:
       bottom: 0
       right: 6
     widgets:
-      center: ["komorebi_workspaces"]
+      left: ["komorebi_workspaces"]
+      center: ["active_window"]
       right: ["traffic", "cpu", "memory"]
 widgets:
+  clock:
+    type: "yasb.clock.ClockWidget"
+    options:
+      label: "\uf017 {%d %a %H:%M}"
+      label_alt: "\uf017 {%Y-%m-%d %A %H:%M:%S}"
+      locale: ""
+      update_interval: 1000
+      timezones: []
+      callbacks:
+        on_left: "toggle_label"
+        on_middle: "do_nothing"
+        on_right: "next_timezone"
   active_window:
     type: "yasb.active_window.ActiveWindowWidget"
     options:
       label: "{win[process][name]}"
       label_alt: "{win[title]}"
-      label_no_window: "test test test test"
+      label_no_window: ""
       label_icon: false
       label_icon_size: 12
-      max_length: 30
+      max_length: 50
       max_length_ellipsis: "..."
-      monitor_exclusive: false
+      monitor_exclusive: true
   taskbar:
     type: "yasb.taskbar.TaskbarWidget"
     options:
@@ -89,12 +102,6 @@ widgets:
         left: 0
         bottom: 0
         right: 0
-  clock:
-    type: "yasb.clock.ClockWidget"
-    options:
-      label: "{%a, %d %b %H:%M}"
-      label_alt: "{%A, %d %B %Y %H:%M}"
-      timezones: []
   komorebi_workspaces:
     type: "komorebi.workspaces.WorkspaceWidget"
     options:
@@ -124,7 +131,7 @@ widgets:
       controls_only: false
       controls_left: true
       hide_empty: true
-      thumbnail_alpha: 255
+      thumbnail_alpha: 100
       thumbnail_padding: 30
       thumbnail_corner_radius: 0
       icons:
