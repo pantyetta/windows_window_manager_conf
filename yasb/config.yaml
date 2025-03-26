@@ -2,7 +2,7 @@
 # For more information about configuration options, please visit the Wiki https://github.com/amnweb/yasb/wiki
 watch_stylesheet: true
 watch_config: true
-debug: false
+debug: true
 komorebi:
   start_command: "komorebic start --whkd"
   stop_command: "komorebic stop --whkd"
@@ -15,12 +15,16 @@ bars:
     alignment:
       position: "top"
       center: false
+    animation:
+      enabled: true
+      duration: 1000
     blur_effect:
       enabled: false
       acrylic: false
       dark_mode: false
       round_corners: false
-      border_color: System
+      round_corners_type: "normal"
+      border_color: "System"
     window_flags:
       always_on_top: false
       windows_app_bar: true
@@ -35,20 +39,24 @@ bars:
     widgets:
       left: ["komorebi_workspaces", "taskbar"]
       center: ["active_window"]
-      right: ["media", "clock", "power_menu"]
+      right: ["media", "systray", "notifications", "ime", "clock", "power_menu"]
   secondary-bar:
     enabled: true
-    screens: ["KH250V-Z"]
+    screens: ["*"]
     class_name: "yasb-bar"
     alignment:
       position: "top"
       center: false
+    animation:
+      enabled: true
+      duration: 1000
     blur_effect:
       enabled: false
       acrylic: false
       dark_mode: false
       round_corners: false
-      border_color: System
+      round_corners_type: "normal"
+      border_color: "System"
     window_flags:
       always_on_top: false
       windows_app_bar: true
@@ -63,7 +71,7 @@ bars:
     widgets:
       left: ["komorebi_workspaces"]
       center: ["active_window"]
-      right: ["traffic", "cpu", "memory"]
+      right: ["traffic", "cpu", "clock"]
 widgets:
   clock:
     type: "yasb.clock.ClockWidget"
@@ -77,6 +85,36 @@ widgets:
         on_left: "toggle_label"
         on_middle: "do_nothing"
         on_right: "next_timezone"
+  systray:
+    type: "yasb.systray.SystrayWidget"
+    options:
+      class_name: "systray"
+      label_collapsed: ""
+      label_expanded: "▶"
+      label_position: "left" # Can be "left" or "right"
+      icon_size: 14 # Can be any integer between 8 and 64
+      pin_click_modifier: "alt" # Can be "ctrl", "alt" or "shift"
+      show_unpinned: false
+      show_unpinned_button: true
+      show_battery: false
+      show_volume: false
+      show_network: false
+  notifications:
+    type: "yasb.notifications.NotificationsWidget"
+    options:
+      label: "<span>\uf476</span> {count}"
+      label_alt: "{count} notifications"
+      hide_empty: true
+      tooltip: false
+      callbacks:
+        on_left: "toggle_notification"
+        on_right: "do_nothing"
+        on_middle: "toggle_label"
+      container_padding:
+        top: 0
+        left: 8
+        bottom: 0
+        right: 8
   active_window:
     type: "yasb.active_window.ActiveWindowWidget"
     options:
@@ -122,31 +160,29 @@ widgets:
   media:
     type: "yasb.media.MediaWidget"
     options:
-      label: "{title} / {artist}"
-      label_alt: ""
+      label: "{title}"
+      label_alt: "{artist}"
       max_field_size:
         label: 12
-        label_alt: 10
+        label_alt: 24
       show_thumbnail: true
       controls_only: false
       controls_left: true
       hide_empty: true
-      thumbnail_alpha: 100
-      thumbnail_padding: 30
+      thumbnail_alpha: 150
+      thumbnail_padding: 8
       thumbnail_corner_radius: 0
       icons:
         prev_track: "\ue892"
         next_track: "\ue893"
         play: "\ue768"
         pause: "\ue769"
-      callbacks:
-        on_left: "do_nothing"
   cpu:
     type: "yasb.cpu.CpuWidget"
     options:
       label: "<span>\uf4bc</span> {info[percent][total]}%"
       label_alt: "<span>\uf437</span> {info[histograms][cpu_percent]}"
-      update_interval: 1000
+      update_interval: 5000
       histogram_icons:
         - '\u2581' # 0%
         - '\u2581' # 10%
@@ -168,12 +204,11 @@ widgets:
       blur: False
       blur_background: True
       animation_duration: 200
-      button_row: 5
+      button_row: 4
       buttons:
         shutdown: ["\uf011", "Shut Down"]
         restart: ["\uead2", "Restart"]
         signout: ["\udb80\udf43", "Sign out"]
-        hibernate: ["\uf28e", "Hibernate"]
         sleep: ["\u23fe", "Sleep"]
         cancel: ["", "Cancel"]
   traffic:
@@ -181,20 +216,11 @@ widgets:
     options:
       label: "\ueb01 \ueab4 {download_speed} | \ueab7 {upload_speed}"
       label_alt: "Download {download_speed} | Upload {upload_speed}"
-      update_interval: 1000
-      callbacks:
-        on_left: "toggle_label"
-  memory:
-    type: "yasb.memory.MemoryWidget"
-    options:
-      label: "<span>\uf4bc</span> {virtual_mem_free}/{virtual_mem_total}"
-      label_alt: "<span>\uf4bc</span> VIRT: {virtual_mem_percent}% SWAP: {swap_mem_percent}%"
       update_interval: 5000
       callbacks:
         on_left: "toggle_label"
-        on_middle: "do_nothing"
-        on_right: "do_nothing"
-      memory_thresholds:
-        low: 25
-        medium: 50
-        high: 90
+  ime:
+    type: "yasb.ime.ImeWidget"
+    options:
+      label: "{info[imemode]}"
+      update_interval: 500
