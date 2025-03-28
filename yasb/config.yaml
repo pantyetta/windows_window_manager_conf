@@ -71,75 +71,8 @@ bars:
     widgets:
       left: ["komorebi_workspaces"]
       center: ["active_window"]
-      right: ["traffic", "cpu", "clock"]
+      right: ["ime", "clock"]
 widgets:
-  clock:
-    type: "yasb.clock.ClockWidget"
-    options:
-      label: "\uf017 {%d %a %H:%M}"
-      label_alt: "\uf017 {%Y-%m-%d %A %H:%M:%S}"
-      locale: ""
-      update_interval: 1000
-      timezones: []
-      callbacks:
-        on_left: "toggle_label"
-        on_middle: "do_nothing"
-        on_right: "next_timezone"
-  systray:
-    type: "yasb.systray.SystrayWidget"
-    options:
-      class_name: "systray"
-      label_collapsed: ""
-      label_expanded: "▶"
-      label_position: "left" # Can be "left" or "right"
-      icon_size: 14 # Can be any integer between 8 and 64
-      pin_click_modifier: "alt" # Can be "ctrl", "alt" or "shift"
-      show_unpinned: false
-      show_unpinned_button: true
-      show_battery: false
-      show_volume: false
-      show_network: false
-  notifications:
-    type: "yasb.notifications.NotificationsWidget"
-    options:
-      label: "<span>\uf476</span> {count}"
-      label_alt: "{count} notifications"
-      hide_empty: true
-      tooltip: false
-      callbacks:
-        on_left: "toggle_notification"
-        on_right: "do_nothing"
-        on_middle: "toggle_label"
-      container_padding:
-        top: 0
-        left: 8
-        bottom: 0
-        right: 8
-  active_window:
-    type: "yasb.active_window.ActiveWindowWidget"
-    options:
-      label: "{win[process][name]}"
-      label_alt: "{win[title]}"
-      label_no_window: ""
-      label_icon: false
-      label_icon_size: 12
-      max_length: 50
-      max_length_ellipsis: "..."
-      monitor_exclusive: true
-  taskbar:
-    type: "yasb.taskbar.TaskbarWidget"
-    options:
-      animation: true
-      icon_size: 12
-      ignore_apps:
-        processes: []
-        titles: []
-        classes: []
-      container_padding:
-        top: 0
-        left: 0
-        bottom: 0
-        right: 0
   komorebi_workspaces:
     type: "komorebi.workspaces.WorkspaceWidget"
     options:
@@ -157,6 +90,31 @@ widgets:
         left: 8
         bottom: 0
         right: 8
+  taskbar:
+    type: "yasb.taskbar.TaskbarWidget"
+    options:
+      animation: true
+      icon_size: 12
+      ignore_apps:
+        processes: []
+        titles: []
+        classes: []
+      container_padding:
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+  active_window:
+    type: "yasb.active_window.ActiveWindowWidget"
+    options:
+      label: "{win[process][name]}"
+      label_alt: "{win[title]}"
+      label_no_window: ""
+      label_icon: true
+      label_icon_size: 12
+      max_length: 50
+      max_length_ellipsis: "..."
+      monitor_exclusive: true
   media:
     type: "yasb.media.MediaWidget"
     options:
@@ -177,25 +135,53 @@ widgets:
         next_track: "\ue893"
         play: "\ue768"
         pause: "\ue769"
-  cpu:
-    type: "yasb.cpu.CpuWidget"
+  systray:
+    type: "yasb.systray.SystrayWidget"
     options:
-      label: "<span>\uf4bc</span> {info[percent][total]}%"
-      label_alt: "<span>\uf437</span> {info[histograms][cpu_percent]}"
-      update_interval: 5000
-      histogram_icons:
-        - '\u2581' # 0%
-        - '\u2581' # 10%
-        - '\u2582' # 20%
-        - '\u2583' # 30%
-        - '\u2584' # 40%
-        - '\u2585' # 50%
-        - '\u2586' # 60%
-        - '\u2587' # 70%
-        - '\u2588' # 80%+
-      histogram_num_columns: 4
+      class_name: "systray"
+      label_collapsed: ""
+      label_expanded: "▶"
+      label_position: "left" # Can be "left" or "right"
+      icon_size: 14 # Can be any integer between 8 and 64
+      pin_click_modifier: "alt" # Can be "ctrl", "alt" or "shift"
+      show_unpinned: false
+      show_unpinned_button: true
+      show_battery: false
+      show_volume: false
+      show_network: false
+  ime:
+    type: "yasb.ime.ImeWidget"
+    options:
+      label: "{info[imemode]}"
+      update_interval: 500
+  notifications:
+    type: "yasb.notifications.NotificationsWidget"
+    options:
+      label: "<span>\uf476</span> {count}"
+      label_alt: "{count} notifications"
+      hide_empty: true
+      tooltip: false
       callbacks:
-        on_right: "exec cmd /c Taskmgr"
+        on_left: "toggle_notification"
+        on_right: "do_nothing"
+        on_middle: "toggle_label"
+      container_padding:
+        top: 0
+        left: 8
+        bottom: 0
+        right: 8
+  clock:
+    type: "yasb.clock.ClockWidget"
+    options:
+      label: "\uf017 {%d %a %H:%M}"
+      label_alt: "\uf017 {%Y-%m-%d %A %H:%M:%S}"
+      locale: ""
+      update_interval: 1000
+      timezones: []
+      callbacks:
+        on_left: "toggle_label"
+        on_middle: "do_nothing"
+        on_right: "next_timezone"
   power_menu:
     type: "yasb.power_menu.PowerMenuWidget"
     options:
@@ -211,16 +197,3 @@ widgets:
         signout: ["\udb80\udf43", "Sign out"]
         sleep: ["\u23fe", "Sleep"]
         cancel: ["", "Cancel"]
-  traffic:
-    type: "yasb.traffic.TrafficWidget"
-    options:
-      label: "\ueb01 \ueab4 {download_speed} | \ueab7 {upload_speed}"
-      label_alt: "Download {download_speed} | Upload {upload_speed}"
-      update_interval: 5000
-      callbacks:
-        on_left: "toggle_label"
-  ime:
-    type: "yasb.ime.ImeWidget"
-    options:
-      label: "{info[imemode]}"
-      update_interval: 500
