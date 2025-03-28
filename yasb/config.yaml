@@ -33,9 +33,9 @@ bars:
       height: 32
     padding:
       top: 4
-      left: 6
+      left: 8
       bottom: 0
-      right: 6
+      right: 8
     widgets:
       left: ["komorebi_workspaces", "taskbar"]
       center: ["active_window"]
@@ -65,9 +65,9 @@ bars:
       height: 32
     padding:
       top: 4
-      left: 6
+      left: 8
       bottom: 0
-      right: 6
+      right: 8
     widgets:
       left: ["komorebi_workspaces"]
       center: ["active_window"]
