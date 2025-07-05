@@ -26,7 +26,7 @@ alt + f                 : komorebic toggle-monocle
 win + m                 : komorebic minimize
 win + e                 : explorer
 win + r                 : (New-Object -ComObject "Shell.Application").FileRun()
-win + 1                 : start-process arc
+win + 1                 : start-process zen
 win + q                 : komorebic close
 
 # workspace
